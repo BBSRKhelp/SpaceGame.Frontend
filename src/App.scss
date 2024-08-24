@@ -1,0 +1,214 @@
+@mixin displayFlex{
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.buttonMenu{
+  z-index: 200;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: #0B0B0B ;
+  grid-column: 2;
+  grid-row: 3;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  -webkit-box-shadow: 1px -8px 6px -5px rgba(255, 255, 255, 0.24);
+  -moz-box-shadow: 1px -8px 6px -5px rgba(255, 255, 255, 0.24);
+  box-shadow: 1px -8px 6px -5px rgba(255, 255, 255, 0.24);
+
+  div{
+    width: 12%;
+    height: 70%;
+    border-radius: 14px;
+    background-color: #1C1C1C;
+    margin: auto;
+
+    // $listColor: ("#17674F", "#502878", "#4A0029");
+
+    &.active{
+      background-color: #57A6C8;
+    }
+  }
+}
+
+.mainContainer{
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(100, 1%);
+  grid-template-rows: repeat(100, 1%);
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 4;
+
+  .nextPlanets{
+    background: #0B0B0B;
+    border: 1px solid black;
+    border-radius: 10px;
+    @include displayFlex();
+    justify-content: space-around;
+    align-items: center;
+    grid-column: 13/ span 75;
+    grid-row: 5 / span 5;
+
+    .planetMainPage{
+      height: 80%;
+
+      svg{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .coinCounter{
+    background: #171717;
+    border: 1px solid black;
+    border-radius: 10px;
+    @include displayFlex();
+    justify-content: left;
+    align-items: center;
+    grid-column: 30 / span 40;
+    grid-row: 13 / span 6;
+    font-size: 3vh;
+
+    .nfoCoin{
+      width: 30%;
+      height: 50%;
+      background: url(./assets/Image/ufoOnCounter.svg) no-repeat;
+      background-size: 100% 100%
+    }
+  }
+
+  .oreCounter{
+    font-size: 1.5vh;
+    background: #171717;
+    border: 1px solid black;
+    border-radius: 20px;
+    display: grid;
+    grid-template-columns: repeat(100, 1%);
+    grid-template-rows: repeat(100, 1%);
+    grid-column: 75 / span 20;
+    grid-row: 13 / span 14;
+
+    @for $i from 1 through 5 {
+      .viewOre#{$i} {
+        width: 100%;
+        grid-column: 10 / span 80;
+        grid-row: (15 * $i) / span 10;
+        @include displayFlex();
+        align-items: center;
+
+        .iconOre#{$i}{
+          width: 30%;
+          height: 100%;
+          background: url(./assets/Image/viewOre1.svg) no-repeat;
+          background-size: 100% 100%;
+        }
+
+        .amountOre#{$i}{
+          height: 100%;
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+
+  .nfo{
+    background: url(./assets/Image/ufo.svg) no-repeat;
+    background-size: 100% 100%;
+    grid-column: 20 / span 60;
+    grid-row: 15 / span 40;
+  }
+
+  .mainPlanet{
+    background: url(./assets/Image/mainPlanet.svg) no-repeat;
+    background-size: 100% 100%;
+    grid-column: 15 / span 70;
+    grid-row: 37 / span 35;
+    transition: transform 0.2s ease;
+
+    &:active {
+      transform: scale(1.02) rotate(1deg);
+      animation: shake 0.5s ease;
+    }
+  }
+  .viewBattery{
+    grid-column: 7 / span 25;
+    grid-row: 75 / span 5;
+    @include displayFlex();
+    align-items: center;
+
+    #progressbar {
+      position: relative; 
+      width: 100%;
+      height: 100%;
+      background-color: #171717;
+      border-radius: 15px;
+      padding: 3px;
+      @include displayFlex();
+      
+      .countCharge{
+        font-size: 2vh;
+        position: absolute;
+        left: 15%; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        width: 80%;
+        height: 40%;
+        @include displayFlex();
+        align-items: center;
+      }
+
+      .interactiveCharge {
+        background: linear-gradient(to right, #BBC63D, #171717);
+          width: 10%;
+          height: 100%;
+          border-radius: 15px;
+          flex-grow: 0.6; 
+      }
+  
+      .iconBattery {
+        position: absolute;
+        right: 10%; 
+        top: 50%; 
+        transform: translateY(-50%); 
+        background: url(./assets/Image/battery.svg) no-repeat;
+        background-size: 100% 100%;
+        width: 20%;
+        height: 40%; 
+      }
+    }
+    #tipOfBattery{
+      width: 5%;
+      height: 30%;
+      background-color: #171717;
+      border-radius: 25px;
+    } 
+  }
+
+  .dailyGame{
+    background: url(./assets/Image/dailyGame.svg) no-repeat;
+    background-size: 100% 100%;
+    grid-column: 43 / span 15;
+    grid-row: 72 / span 12;
+  }
+
+  .timerGame{
+    border: 1px solid black;
+    border-radius: 15px;
+    grid-column: 73 / span 20;
+    grid-row: 76 / span 4;
+    background-color: #171717;
+    @include displayFlex();
+    align-items: center;
+    justify-content: center;
+  }
+}
+
